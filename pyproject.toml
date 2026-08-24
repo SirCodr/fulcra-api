@@ -1,0 +1,2 @@
+[tool.vercel]
+entrypoint = "api.fulcra_yesterday:handler"
