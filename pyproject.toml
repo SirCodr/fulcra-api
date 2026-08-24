@@ -1,2 +1,10 @@
+[project]
+name = "fulcra-api"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "fulcra-api>=0.1.40",
+]
+
 [tool.vercel]
 entrypoint = "api.fulcra_yesterday:handler"
