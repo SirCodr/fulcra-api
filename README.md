@@ -34,7 +34,6 @@ FULCRA_ACCESS_TOKEN=...
 Recommended:
 
 ```text
-FULCRA_ENDPOINT_API_KEY=choose-a-private-key
 DEFAULT_TIMEZONE=America/Bogota
 DEFAULT_DAYS=7
 ```
@@ -45,12 +44,6 @@ Optional:
 FULCRA_ACCESS_TOKEN_EXPIRATION=2026-08-24T16:00:00Z
 FULCRA_USERID=...
 CORS_ALLOW_ORIGIN=*
-```
-
-When `FULCRA_ENDPOINT_API_KEY` is set, call the endpoint with:
-
-```text
-x-api-key: your-private-key
 ```
 
 ## Local token helper

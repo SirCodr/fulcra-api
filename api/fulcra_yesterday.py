@@ -497,15 +497,6 @@ def build_report(query: dict[str, list[str]]) -> dict[str, Any]:
     }
 
 
-def _require_endpoint_key(headers: Any, query: dict[str, list[str]]) -> None:
-    expected = os.getenv("FULCRA_ENDPOINT_API_KEY")
-    if not expected:
-        return
-    supplied = headers.get("x-api-key") or _first(query, "api_key")
-    if supplied != expected:
-        raise APIError(401, "Invalid or missing API key")
-
-
 def _write_json(handler: BaseHTTPRequestHandler, status: int, payload: dict[str, Any]) -> None:
     body = json.dumps(payload, ensure_ascii=False, default=_json_default).encode("utf-8")
     handler.send_response(status)
@@ -528,7 +519,6 @@ class handler(BaseHTTPRequestHandler):
         try:
             parsed = urlparse(self.path)
             query = parse_qs(parsed.query)
-            _require_endpoint_key(self.headers, query)
             payload = build_report(query)
             _write_json(self, 200, payload)
         except APIError as exc:
